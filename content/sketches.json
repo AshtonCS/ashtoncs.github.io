@@ -1,0 +1,11 @@
+[
+  {
+    "id":     "sketch-1",
+    "title":  "Sketch Title",
+    "date":   "01 Jan 2000",
+    "desc":   "Default Description",
+    "image":  "images/sketches/sketch-1.jpg",
+    "bg":     "#DDF4EE",
+    "size":   "med"
+  }
+]

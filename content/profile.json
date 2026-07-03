@@ -1,0 +1,23 @@
+{
+  "name": "Your Name",
+  "tagline": "Computer Scientist specialising in Quantum Software and Innovation Practices",
+  "bio": "Hi there! I'm a computer scientist with a passion for quantum computing, software engineering, and innovation. I enjoy exploring new technologies, solving complex problems, and collaborating with others to create impactful solutions.",
+  "photo": "images/photo.jpg",
+  "skills": [
+    { "label": "Software Engineering",          "colour": "purple" },
+    { "label": "Developing Technologies",        "colour": "teal"   },
+    { "label": "Algorithms and Data",            "colour": "amber"  },
+    { "label": "Quantum Computing",              "colour": "purple" },
+    { "label": "Entrepreneurial Ecosystems",     "colour": "teal"   }
+  ],
+  "interests": [
+    "Problem Solving", "Animation", "Puzzles", "Tennis", "Cryptography",
+    "Peanuts", "LEGO", "Programming", "Spicy Food", "The Muppets",
+    "Art", "Museums", "Cartoons", "Shakespeare", "Reading",
+    "World History", "Wallace and Gromit", "Drawing", "Collaboration"
+  ],
+  "social": {
+    "github":   "https://github.com/AshtonCS",
+    "linkedin": "https://linkedin.com/in/ashcs"
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "id":      "post-1",
+    "title":   "Default Title",
+    "date":    "DD Mon YYYY",
+    "tag":     "Default Category",
+    "excerpt": "Default Excerpt",
+    "body":    "Default Main Body",
+    "emoji":   "✏️",
+    "bg":      "#E0EFFC"
+  }
+]

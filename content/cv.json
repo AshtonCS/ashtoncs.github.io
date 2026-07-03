@@ -1,0 +1,35 @@
+{
+  "experience": [
+    {
+      "role":    "Research Assistant",
+      "org":     "ARC Centre of Excellence in Quantum Biotechnology (QUBIC)",
+      "dates":   "Dec 2025 – Feb 2026"
+    },
+    {
+      "role":    "Research Assistant",
+      "org":     "Sydney Quantum Academy",
+      "dates":   "Jan 2025 – Feb 2025"
+    }
+  ],
+  "education": [
+    {
+      "role":    "Bachelor of Computing Science (Honours)",
+      "org":     "University of Technology, Sydney",
+      "dates":   "2023 – PRESENT",
+      "type":    "edu"
+    },
+    {
+      "role":    "Diploma in Innovation",
+      "org":     "University of Technology, Sydney",
+      "dates":   "2023 – PRESENT",
+      "type":    "edu"
+    },
+    {
+      "role":    "Diploma in Information Technology",
+      "org":     "University of New England",
+      "dates":   "2021 – 2022",
+      "type":    "edu"
+    }
+  ],
+  "cv_pdf": "cv.pdf"
+}
