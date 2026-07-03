@@ -525,8 +525,15 @@ input[type="email"]:focus { border-color: var(--cur-a, var(--home-a)); }
   <div>
     <h3>Get in touch</h3>
     <p>Open to conversations, collaborations, or just a good chat.</p>
-    <form id="contactForm" class="input-row">
-      <input type="email" id="contactEmail" placeholder="your@email.com" required>
+    <form id="contactForm">
+      <div class="input-row" style="margin-bottom:8px">
+        <input type="email" id="contactEmail" placeholder="your@email.com" required>
+      </div>
+      <textarea id="contactMessage" placeholder="Your message…" required
+        style="font-family:'Inter',sans-serif;font-size:13px;padding:10px 16px;
+        border-radius:14px;border:1px solid var(--border);background:var(--surface);
+        color:var(--text);outline:none;width:100%;resize:vertical;
+        min-height:90px;margin-bottom:8px;transition:border-color 0.15s"></textarea>
       <button type="submit" class="btn-send">Send →</button>
     </form>
   </div>
@@ -676,13 +683,15 @@ async function initSite() {
   /* contact form */
   document.getElementById('contactForm').addEventListener('submit', async e => {
     e.preventDefault();
-    const email = document.getElementById('contactEmail').value;
+    const email   = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
     await fetch('https://formspree.io/f/mqevgwvy', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email })
+      body: JSON.stringify({ email, message })
     });
-    document.getElementById('contactForm').innerHTML = '<p style="color:var(--sk-a);font-family:DM Mono,monospace;font-size:13px">Thanks — I\'ll be in touch!</p>';
+    document.getElementById('contactForm').innerHTML =
+      '<p style="color:var(--sk-a);font-family:DM Mono,monospace;font-size:13px">Thanks — I\'ll be in touch!</p>';
   });
 
   /* background card snippet */
