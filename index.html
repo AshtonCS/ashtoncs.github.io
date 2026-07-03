@@ -627,7 +627,7 @@ async function initSite() {
   document.title = profile.name + ' — Portfolio';
   document.getElementById('heroName').textContent  = profile.name;
   document.getElementById('heroTagline').textContent = profile.tagline;
-  document.getElementById('navName').textContent   = profile.name.toLowerCase().replace(' ','');
+  document.getElementById('navName').textContent   = profile.name;
   document.getElementById('logoMark').textContent  = initials[0] || 'y';
   document.getElementById('abName').textContent    = profile.name;
   document.getElementById('abBio').textContent     = profile.bio;
