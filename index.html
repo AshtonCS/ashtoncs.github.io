@@ -677,7 +677,7 @@ async function initSite() {
   document.getElementById('contactForm').addEventListener('submit', async e => {
     e.preventDefault();
     const email = document.getElementById('contactEmail').value;
-    await fetch('https://formspree.io/f/xxxxxxxx', {
+    await fetch('https://formspree.io/f/mqevgwvy', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
