@@ -36,6 +36,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--bg); color: var(--text);
   min-height: 100vh; transition: background 0.3s, color 0.3s;
+  display: flex; flex-direction: column;
 }
 
 /* ── NAV ── */
@@ -359,7 +360,7 @@ nav {
   background: var(--sf2); border-top: 1px solid var(--border);
   padding: 1.25rem 3rem;
   display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
-  position: sticky; bottom: 0; z-index: 50;
+  margin-top: auto;
 }
 .footer-label {
   font-family: 'DM Mono', monospace; font-size: 11px;
