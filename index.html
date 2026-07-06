@@ -192,10 +192,8 @@ nav {
   padding: 0 3rem;
 }
 .interests-track-wrap {
-  overflow: hidden;
-  position: relative;
-  cursor: grab;
-  user-select: none;
+  overflow: hidden; position: relative;
+  cursor: grab; user-select: none;
 }
 .interests-track-wrap:active { cursor: grabbing; }
 .interests-track {
@@ -365,24 +363,28 @@ nav {
 .footer-label {
   font-family: 'DM Mono', monospace; font-size: 11px;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  white-space: nowrap;
 }
-.footer-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.footer-divider {
+  width: 1px; height: 18px; background: var(--border); flex-shrink: 0;
+}
+.footer-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .footer-link {
   font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
   color: var(--cur-a, var(--home-a)); text-decoration: none;
-  padding: 6px 16px; border-radius: 99px; border: 1px solid var(--cur-a, var(--home-a));
+  padding: 6px 16px; border-radius: 99px;
+  border: 1px solid var(--cur-a, var(--home-a));
   transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
 }
 .footer-link:hover { background: var(--cur-a, var(--home-a)); color: #fff; }
 
 /* ════════ MOBILE ════════ */
 @media (max-width: 768px) {
-  /* Nav */
   nav { padding: 0 1rem; }
   .logo-name { display: none; }
   .tab-btn { font-size: 12px; padding: 6px 10px; }
 
-  /* Home */
   .home-wrap { grid-template-columns: 1fr; min-height: auto; }
   .home-left { padding: 2.5rem 1.5rem 2rem; }
   .home-right {
@@ -393,7 +395,6 @@ nav {
   .home-cards { grid-template-columns: 1fr; padding: 0 1.5rem 1.5rem; }
   .interests-label { padding: 0 1.5rem; }
 
-  /* Sections */
   .sec-hero, .sk-hero-strip { padding: 2rem 1.5rem 1.5rem; }
   .upd-list { padding: 1.5rem 1.5rem 2.5rem; }
   .upd-card { grid-template-columns: 90px 1fr; }
@@ -401,14 +402,14 @@ nav {
   .masonry { columns: 2; padding: 1.5rem 1.5rem 2.5rem; }
   .post-view { padding: 1.5rem; }
 
-  /* About */
   .ab-hero { padding: 2rem 1.5rem; gap: 1.25rem; }
   .ab-body { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; }
 
-  /* Footer */
   .contact-strip {
-    grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
   }
+  .footer-divider { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -416,13 +417,15 @@ nav {
   .masonry { columns: 1; }
   .upd-card { grid-template-columns: 1fr; }
   .upd-thumb { min-height: 60px; }
+  .footer-links { gap: 8px; }
+  .footer-link { font-size: 12px; padding: 5px 12px; }
 }
 </style>
 </head>
 <body>
 <nav id="mainNav">
   <a class="logo" href="#" onclick="switchTab('home');return false;">
-    <span class="logo-mark" id="logoMark">A</span>
+    <span class="logo-mark" id="logoMark">🏠</span>
     <span class="logo-name" id="navName">ACS</span>
   </a>
   <div class="nav-right">
@@ -554,6 +557,7 @@ nav {
 <!-- ══ SHARED FOOTER ══ -->
 <footer class="contact-strip" id="siteFooter">
   <span class="footer-label">Get in touch</span>
+  <div class="footer-divider"></div>
   <div class="footer-links" id="footerLinks"></div>
 </footer>
 
@@ -574,10 +578,10 @@ nav {
 <script>
 /* ══ TABS & WAVE ══ */
 const TAB_META = {
-  home:     { a:'#6B5CE7', c:'#C4BEFA', d:'#9D94F0', mark:'A' },
-  updates:  { a:'#0077CC', c:'#7EC0EE', d:'#3FA3E8', mark:'A' },
-  sketches: { a:'#00967A', c:'#6DDEC4', d:'#3DC9A8', mark:'A' },
-  about:    { a:'#C25F0A', c:'#F5B86A', d:'#E8962A', mark:'A' },
+  home:     { a:'#6B5CE7', c:'#C4BEFA', d:'#9D94F0', mark:'🏠' },
+  updates:  { a:'#0077CC', c:'#7EC0EE', d:'#3FA3E8', mark:'✏️' },
+  sketches: { a:'#00967A', c:'#6DDEC4', d:'#3DC9A8', mark:'🎨' },
+  about:    { a:'#C25F0A', c:'#F5B86A', d:'#E8962A', mark:'👤' },
 };
 function setWave(tab) {
   const t = TAB_META[tab];
@@ -618,7 +622,6 @@ const INT_STYLES = [
   { bg:'var(--ab-b)',   color:'var(--ab-a)',   border:'var(--ab-c)'   },
   { bg:'var(--sk-b)',   color:'var(--sk-a)',   border:'var(--sk-c)'   },
 ];
-const SOCIAL_ICONS  = { github:'gh', linkedin:'in', x:'𝕏' };
 const SOCIAL_LABELS = { github:'GitHub', linkedin:'LinkedIn', x:'Twitter / X' };
 
 async function loadJSON(path) {
@@ -676,24 +679,21 @@ async function initSite() {
     return span;
   });
   buildPills().forEach(el => track.appendChild(el));
-  buildPills().forEach(el => track.appendChild(el)); /* duplicate for seamless loop */
+  buildPills().forEach(el => track.appendChild(el));
 
   /* Drag/swipe on interests */
   const wrap = document.getElementById('interestsWrap');
-  let isDragging = false, startX = 0, scrollLeft = 0, animOffset = 0;
-
+  let isDragging = false, startX = 0, animOffset = 0;
   wrap.addEventListener('mousedown', e => {
     isDragging = true;
     wrap.classList.add('dragging');
     startX = e.pageX;
-    const style = window.getComputedStyle(track);
-    const matrix = new WebKitCSSMatrix(style.transform);
+    const matrix = new WebKitCSSMatrix(window.getComputedStyle(track).transform);
     animOffset = matrix.m41;
   });
   window.addEventListener('mousemove', e => {
     if (!isDragging) return;
-    const dx = e.pageX - startX;
-    track.style.transform = `translateX(${animOffset + dx}px)`;
+    track.style.transform = `translateX(${animOffset + e.pageX - startX}px)`;
     track.style.animationPlayState = 'paused';
   });
   window.addEventListener('mouseup', () => {
@@ -705,14 +705,12 @@ async function initSite() {
   });
   wrap.addEventListener('touchstart', e => {
     startX = e.touches[0].pageX;
-    const style = window.getComputedStyle(track);
-    const matrix = new WebKitCSSMatrix(style.transform);
+    const matrix = new WebKitCSSMatrix(window.getComputedStyle(track).transform);
     animOffset = matrix.m41;
     track.style.animationPlayState = 'paused';
   }, { passive: true });
   wrap.addEventListener('touchmove', e => {
-    const dx = e.touches[0].pageX - startX;
-    track.style.transform = `translateX(${animOffset + dx}px)`;
+    track.style.transform = `translateX(${animOffset + e.touches[0].pageX - startX}px)`;
   }, { passive: true });
   wrap.addEventListener('touchend', () => {
     track.style.transform = '';
@@ -721,31 +719,20 @@ async function initSite() {
 
   /* Footer links */
   const fl = document.getElementById('footerLinks');
-  const emailLink = document.createElement('a');
-  emailLink.className = 'footer-link';
-  emailLink.href = `mailto:${profile.contact_email}`;
-  emailLink.textContent = 'Email me';
-  fl.appendChild(emailLink);
+  if (profile.contact_email && !profile.contact_email.includes('PLACEHOLDER')) {
+    const a = document.createElement('a');
+    a.className = 'footer-link';
+    a.href = `mailto:${profile.contact_email}`;
+    a.textContent = 'Email me';
+    fl.appendChild(a);
+  }
   Object.entries(profile.social).forEach(([key, url]) => {
     if (!url || url.includes('PLACEHOLDER')) return;
     const a = document.createElement('a');
-    a.className = 'footer-link'; a.href = url; a.target = '_blank';
+    a.className = 'footer-link';
+    a.href = url; a.target = '_blank';
     a.textContent = SOCIAL_LABELS[key] || key;
     fl.appendChild(a);
-  });
-
-  /* Contact form */
-  document.getElementById('contactForm').addEventListener('submit', async e => {
-    e.preventDefault();
-    const email   = document.getElementById('contactEmail').value;
-    const message = document.getElementById('contactMessage').value;
-    await fetch('https://formspree.io/f/mqevgwvy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, message })
-    });
-    document.getElementById('contactForm').innerHTML =
-      '<p style="color:var(--sk-a);font-family:DM Mono,monospace;font-size:13px">Thanks — I\'ll be in touch!</p>';
   });
 
   /* Background card snippet */
